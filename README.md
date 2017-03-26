@@ -2,6 +2,6 @@
 Programming languages code, course 2016
 
 == Authors ==
- * Luis Daniel Hernandez
- * Tim Givois
- * Alvaro Soto
+ * TIMOTHEE RENE GIVOIS MENDEZ
+ * LUIS DANIEL HERNANDEZ SANDOVAL
+ * ALVARO ANTONIO SOTO ESCOBAR
