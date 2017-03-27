@@ -1,22 +1,18 @@
+.PHONY: all clean run
+
 out = polynomial.out
-
-.PHONY: all clean editor run nuke
-
-all: editor
+all:
 	@go vet
+	@gofmt -s -l -w *.go
+	@go build -o $(out) *.go
+	@echo "[+] Building executable file $(out)"
 
 clean:
 	@go clean
 	@rm -f *~
 	@rm -f *.out
-
-editor:
-	@gofmt -s -l -w *.go
-	@go build -o $(out) *.go
+	@go clean -i
 
 run:
 	@gofmt -s -l -w *.go
 	@go run *.go
-
-nuke: clean
-	go clean -i
