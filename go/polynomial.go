@@ -1,7 +1,9 @@
 package main
 
 import (
+    "os"
     "fmt"
+	"strconv"
     "math/big"
 )
 
@@ -27,6 +29,16 @@ func (p *Poly) trim() {
         }
     }
     *p = (*p)[:(last + 1)]
+}
+
+func (p *Poly) Neg() Poly {
+    var q Poly = make([]*big.Int, len(*p))
+    for i := 0; i < len(*p); i++ {
+        b := new(big.Int)
+        b.Neg((*p)[i])
+        q[i] = b
+    }
+    return q
 }
 
 func (p Poly) GetDegree() int {
@@ -97,7 +109,42 @@ func (p Poly) Mul(q Poly) Poly {
     }
     r.trim()
     return r
- }
+}
+
+func (p Poly) Eval(x *big.Int, m *big.Int) (y *big.Int) {
+	y = big.NewInt(0)
+    accx := big.NewInt(1)
+    xd := new(big.Int)
+    for i := 0; i <= p.GetDegree(); i++ {
+        xd.Mul(accx, p[i])
+        y.Add(y, xd)
+        accx.Mul(accx, x)
+        
+		if m != nil {
+        	y.Mod(y, m)
+            accx.Mod(accx, m)
+        }
+    }
+    return y
+}
+
+func (p *Poly) Compose(q Poly) Poly {
+	var r Poly = make([]*big.Int, p.GetDegree()+q.GetDegree()+1)
+    for i := 0; i < r.GetDegree()+1; i++ {
+		r[i] = big.NewInt(0)
+	}
+
+	for i := p.GetDegree(); i >= 0; i-- {
+		coeff, err := strconv.Atoi((*p)[i].String())
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(2)
+		}
+		term := NewPolyInts(coeff)
+		r = term.Add(q.Mul(r))
+	}
+	return r
+}
 
 func (p Poly) String() (s string) {
 
@@ -159,4 +206,6 @@ func main() {
     fmt.Println( "q(x)        = " + q.String() )
     fmt.Println( "p(x) + q(x) = " + r.String() )
     fmt.Println( "p(x) * q(x) = " + s.String() )
+	fmt.Println( "p(q(x))     = " + p.Compose(q).String() )
+	fmt.Println( "0 - p(x)    = " + zero.Add(p.Neg()).String() )
 }
