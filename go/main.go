@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
-	"./polynomial"
+    "fmt"
+    "strconv"
+    "./polynomial"
 )
 
 
@@ -28,7 +28,7 @@ func main() {
     fmt.Println( "q(x)        = " + q.String() )
     fmt.Println( "p(x) + q(x) = " + r.String() )
     fmt.Println( "p(x) * q(x) = " + s.String() )
-	fmt.Println( "p(q(x))     = " + p.Compose(q).String() )
-	fmt.Println( "0 - p(x)    = " + zero.Add(p.Neg()).String() )
+    fmt.Println( "p(q(x))     = " + p.Compose(q).String() )
+    fmt.Println( "0 - p(x)    = " + zero.Add(p.Neg()).String() )
     fmt.Println( "p(3)        = " + strconv.FormatFloat(p.Eval(3), 'f', 0, 64) )
 }
