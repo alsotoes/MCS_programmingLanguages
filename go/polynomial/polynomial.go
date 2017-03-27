@@ -2,9 +2,9 @@ package polynomial
 
 import (
     "os"
-	  "fmt"
-	  "math"
-	  "strconv"
+    "fmt"
+    "math"
+    "strconv"
     "math/big"
 )
 
