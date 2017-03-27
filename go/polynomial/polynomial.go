@@ -2,9 +2,9 @@ package polynomial
 
 import (
     "os"
-	"fmt"
-	"math"
-	"strconv"
+	  "fmt"
+	  "math"
+	  "strconv"
     "math/big"
 )
 
@@ -114,9 +114,9 @@ func (p Poly) Mul(q Poly) Poly {
 
 func (p *Poly) Eval(x int) (y float64) {
 	for i := p.GetDegree(); i >= 0; i-- {
-		coeff, err := strconv.Atoi((*p)[i].String())
+    coeff, err := strconv.Atoi((*p)[i].String())
 		if err != nil {
-			fmt.Println(err)
+		  fmt.Println(err)
 			os.Exit(2)
 		}
 		y += float64(coeff)*math.Pow(float64(x),float64(i))
