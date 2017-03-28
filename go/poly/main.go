@@ -21,6 +21,7 @@ func main() {
 
 	r := p.Add(q)
 	s := p.Mul(q)
+	x := p.Differenciate()
 
 	fmt.Println("zero(x)     = " + zero.String())
 	fmt.Println("p(x)        = " + p.String())
@@ -30,4 +31,6 @@ func main() {
 	fmt.Println("p(q(x))     = " + p.Compose(q).String())
 	fmt.Println("0 - p(x)    = " + zero.Add(p.Neg()).String())
 	fmt.Println("p(3)        = " + strconv.FormatFloat(p.Eval(3), 'f', 0, 64))
+	fmt.Println("p'(x)       = " + p.Differenciate().String())
+	fmt.Println("p''(x)      = " + x.Differenciate().String())
 }

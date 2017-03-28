@@ -8,7 +8,6 @@ import (
     "math/big"
 )
 
-// f(x) = 3x^3 + 2x + 1 => [1 2 0 3]
 type Poly []*big.Int
 
 func NewPolyInts(coeffs ...int) (p Poly) {
@@ -139,6 +138,27 @@ func (p *Poly) Compose(q Poly) Poly {
 		term := NewPolyInts(coeff)
 		r = term.Add(q.Mul(r))
 	}
+	return r
+}
+
+func (p *Poly) Differenciate() Poly {
+	var r Poly = make([]*big.Int, p.GetDegree()+1)
+	for i := 0; i < len(r); i++ { 
+		r[i] = big.NewInt(0)
+	}
+
+	if p.GetDegree() != 0 {
+		for i := p.GetDegree(); i > 0; i-- { 
+			coeff, err := strconv.Atoi((*p)[i].String()) 
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(2)
+			}
+
+			r[i-1] = big.NewInt(int64(coeff*i))
+		}
+	}
+	r.trim()
 	return r
 }
 
