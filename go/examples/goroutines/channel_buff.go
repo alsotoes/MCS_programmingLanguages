@@ -10,5 +10,5 @@ func main() {
 	go c3()
 	fmt.Println(<-c)
 	fmt.Println(<-c)
-    fmt.Println(<-c)
+	fmt.Println(<-c)
 }
