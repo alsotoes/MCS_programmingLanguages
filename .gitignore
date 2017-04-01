@@ -23,5 +23,8 @@ _testmain.go
 *.test
 *.prof
 
+# profiling
+*.o
+
 # Vim swap files
 *.swp
