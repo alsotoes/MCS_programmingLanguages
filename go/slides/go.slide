@@ -54,16 +54,19 @@ However, certain requirements will exclude some choices of memory in certain con
 - Heap (or free store), an area of memory used for dynamic memory allocation.
 - Variables allocated in the stack unlike heap allocated, are destroyed when the rest of the stack is destroyed (when the function returns).
 
-* Garbage collection
-- Background
-  John McCarthy invented something called “garbage collection” all the way back in 1958. 
+* Garbage collection (background)
+John McCarthy invented something called “garbage collection” all the way back in 1958. 
+
+.image images/john_mccarthy.png
+
+* Garbage collection (GOgc)
 
 - Bjarne Stroustrup
   "C programmers think memory management is too important to be left to the computer. 
   Lisp programmers think memory management is too important to be left to the user."
 
 
-The Go garbage collector occasionally has to stop the world to complete the collection task, but the collector is designed so that the stop the world task will take no more than 10 milliseconds
+The Go garbage collector occasionally has to stop the world to complete the collection task, but GO the collector is designed so that the stop the world task will take no more than 10 milliseconds.
 
 Garbage collection brings significant costs: general overhead, latency, and complexity of the implementation, in a concurrent object-oriented language it's almost essential to have automatic memory management because the ownership of a piece of memory can be tricky to manage as it is passed around among concurrent executions.
 
@@ -82,4 +85,3 @@ It pushes a function call onto a list. The list of saved calls is executed after
 Usefull for clean-up actions.
 
 * Exception Handling, defer (2):
-
