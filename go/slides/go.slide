@@ -1,0 +1,48 @@
+Programming Languages
+Go Programming Language
+3 Apr 2017
+
+TIMOTHEE RENE GIVOIS MENDEZ 
+LUIS DANIEL HERNANDEZ SANDOVAL 
+ALVARO ANTONIO SOTO ESCOBAR
+
+
+https://github.com/alsotoes/MCS_programmingLanguages/go
+See github page for the polynomial code and all the examples.
+
+https://golang.org
+See golang.org about everything else.
+
+https://en.wikipedia.org/wiki/Gopher_(animal)
+Search about gopher the golang mascot.
+
+* 
+.image images/gorocks.jpg
+
+* Some more cool features
+
+Go is a new programming language (2009) that didn’t evolve or borrow from existing programming languages such as C# and Java. 
+
+Go focuses on real-world practices for building next-generation applications on the cloud as well as distributed and concurrent computing environments, and for system programming.
+
+Is a statically typed (the type of a variable is known at compile time), garbage-collected, natively compiled programming language that mostly belongs to the C family.
+
+Highly pragmatic maybe for some developers, Go refuses to compile programs with unused variables or imports.
+
+.play code/refuse.go /^func main/,/^}/
+
+* Memory Management
+What Goes Where? The Go Programming Language Specification does not define where items will be allocated. 
+
+However, certain requirements will exclude some choices of memory in certain conditions. For instance:
+
+- The size of the data segment cannot change at run time, and therefore cannot be used for data structures that change size.
+- Heap (or free store), an area of memory used for dynamic memory allocation.
+- Variables allocated in the stack unlike heap allocated, are destroyed when the rest of the stack is destroyed (when the function returns).
+
+* Garbage collection
+
+
+
+
+
