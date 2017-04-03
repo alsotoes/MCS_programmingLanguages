@@ -9,7 +9,7 @@ var counter = 0
 // START OMIT
 func main() {
 	for i := 0; i < 20; i++ {
-		go incr()
+		go incr() // HL
 	}
 
 	time.Sleep(time.Millisecond * 10)

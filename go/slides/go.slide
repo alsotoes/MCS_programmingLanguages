@@ -233,7 +233,7 @@ Channels are the pipes that connect concurrent goroutines. You can send values i
 * Concurrent programming (4), channels range/close.
 A sender can close a channel to indicate that no more values will be sent.
 .play code/channel_range.go /START OMIT/,/END OMIT/
-The loop for i := range ch receives values from the channel repeatedly until it is closed.
+The loop "for i := range c" receives values from the channel repeatedly until it is closed.
 
 * Concurrent programming (5), channels range/close.
 - Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
@@ -245,8 +245,7 @@ The loop for i := range ch receives values from the channel repeatedly until it 
 - Channels aren’t like files; you don’t usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop.
 
 * Concurrent programming (6), tip.
-Parallelism is simply running things in parallel.
-Concurrency is a way to structure your program.
+.html html/concurrent_tip.html
 
 * Q & A
 .image images/gopher.png

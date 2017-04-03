@@ -3,10 +3,10 @@ package main
 import "fmt"
 
 func main() {
-    messages := make(chan string)
+    messages := make(chan string) // HL
 
-    go func() { messages <- "ping" }()
+    go func() { messages <- "ping" }() // HL
 
-    msg := <-messages
+    msg := <-messages // HL
     fmt.Println(msg)
 }

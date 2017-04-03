@@ -10,13 +10,13 @@ func fibonacci(n int, c chan int) {
         c <- x
         x, y = y, x+y
     }
-    close(c)
+    close(c) // HL
 }
 
 func main() {
-    c := make(chan int, 10)
+    c := make(chan int, 10) // HL
     go fibonacci(cap(c), c)
-    for i := range c {
+    for i := range c { // HL
         fmt.Println(i)
     }
 }
