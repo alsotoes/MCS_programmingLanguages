@@ -47,7 +47,7 @@ Is a statically typed (the type of a variable is known at compile time), garbage
 
 Highly pragmatic maybe for some developers, Go refuses to compile programs with unused variables or imports.
 
-.play code/refuse.go /^func main/,/^}/
+.play -edit code/refuse.go /^func main/,/^}/
 
 * Syntax
 
