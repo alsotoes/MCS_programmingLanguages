@@ -164,12 +164,12 @@ However, certain requirements will exclude some choices of memory in certain con
 - Heap (or free store), an area of memory used for dynamic memory allocation.
 - Variables allocated in the stack unlike heap allocated, are destroyed when the rest of the stack is destroyed (when the function returns).
 
-* Garbage collection (background)
+* Garbage collection (1), background.
 John McCarthy invented something called “garbage collection” all the way back in 1958.
 
 .image images/john_mccarthy.png
 
-* Garbage collection (GOgc)
+* Garbage collection (2), GOgc.
 
 - Bjarne Stroustrup
   "C programmers think memory management is too important to be left to the computer.
@@ -182,38 +182,38 @@ Garbage collection brings significant costs: general overhead, latency, and comp
 
 The language is much easier to use because of garbage collection.
 
-* Garbage collection (stop-the-world)
+* Garbage collection (3), stop-the-world.
 .play code/mem_address.go /START OMIT/,/END OMIT/
 
 Large part of the difficulty of concurrent and multi-threaded programming is memory management.
 
-* Exception Handling
+* Exception Handling (1).
 After initially omitting exceptions, the exception-like panic/recover mechanism was eventually added to the language.
 
 Go authors advise using for unrecoverable errors such as those that should halt an entire program or server request.
 
-* Exception Handling, defer (1):
+* Exception Handling (2), defer:
 It pushes a function call onto a list. The list of saved calls is executed after the surrounding function returns.
 
 .code code/defer.go /^func CopyFile/,/^}/
 
 Usefull for clean-up actions.
 
-* Exception Handling, defer (2)
+* Exception Handling (3), defer.
 - A deferred function's arguments are evaluated when the defer statement is evaluated.
 .play code/defer_a.go /^func a/,/^}/
 - Deferred function calls are executed in Last In First Out order after the surrounding function returns.
 .play code/defer_b.go /^func b/,/^}/
 
-* Exception Handling, defer (3)
+* Exception Handling (4), defer.
 - Deferred functions may read and assign to the returning function's named return values.
 .play code/defer_c.go /^func c/,/^}/
 
-* Exception Handling, panic & recover (1)
+* Exception Handling (5), panic & recover.
 - Panic is a built-in function that stops the ordinary flow of control and begins panicking.
 - Recover, is a built-in function that regains control of a panicking goroutine.
 
-* Exception Handling, panic & recover (2)
+* Exception Handling (6), panic & recover.
 .play code/panic_recover.go /START OMIT/,/END OMIT/
 
 * Concurrent programming (1), goroutines.
@@ -244,6 +244,9 @@ The loop for i := range ch receives values from the channel repeatedly until it 
   }
 - Channels aren’t like files; you don’t usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop.
 
+* Concurrent programming (6), tip.
+Parallelism is simply running things in parallel.
+Concurrency is a way to structure your program.
 
 * Q & A
 .image images/gopher.png
