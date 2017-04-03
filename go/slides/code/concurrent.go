@@ -6,7 +6,7 @@ import (
 )
 
 var counter = 0
-
+// START OMIT
 func main() {
 	for i := 0; i < 20; i++ {
 		go incr()
@@ -19,3 +19,4 @@ func incr() {
 	counter++
 	fmt.Println(counter)
 }
+// END OMIT

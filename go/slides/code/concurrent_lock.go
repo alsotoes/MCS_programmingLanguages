@@ -5,10 +5,10 @@ import (
 	"time"
 	"sync"
 )
-
+// START OMIT
 var (
 	counter = 0
-	lock sync.Mutex
+	lock sync.Mutex // HL
 )
 
 func main() {
@@ -20,8 +20,9 @@ func main() {
 }
 
 func incr() {
-	lock.Lock()
-	defer lock.Unlock()
+	lock.Lock() // HL
+	defer lock.Unlock() // HL
 	counter++
 	fmt.Println(counter)
 }
+// END OMIT

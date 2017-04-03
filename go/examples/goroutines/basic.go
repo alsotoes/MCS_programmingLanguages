@@ -18,8 +18,8 @@ func main() {
         fmt.Println(msg)
     }("going")
 
-    var input string
-    fmt.Scanln(&input)
+    //var input string
+    //fmt.Scanln(&input)
     fmt.Println("done")
 }
 

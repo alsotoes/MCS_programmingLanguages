@@ -7,7 +7,7 @@
 package main
 
 import "fmt"
-
+// START OMIT
 func plus(a int, b int) int {
     return a + b
 }
@@ -24,3 +24,4 @@ func main() {
     fmt.Println(funcp(1, 2))
     fmt.Println(funcpp(1, 2, 3))
 }
+// END OMIT

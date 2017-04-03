@@ -182,6 +182,11 @@ Garbage collection brings significant costs: general overhead, latency, and comp
 
 The language is much easier to use because of garbage collection.
 
+* Garbage collection (stop-the-world)
+.play code/mem_address.go /START OMIT/,/END OMIT/
+
+Large part of the difficulty of concurrent and multi-threaded programming is memory management.
+
 * Exception Handling
 After initially omitting exceptions, the exception-like panic/recover mechanism was eventually added to the language.
 
@@ -211,7 +216,34 @@ Usefull for clean-up actions.
 * Exception Handling, panic & recover (2)
 .play code/panic_recover.go /START OMIT/,/END OMIT/
 
-* Concurrency programming
+* Concurrent programming (1), goroutines.
+- Concurrent programming is one of the most interesting aspects of the Go language.
+- Do not communicate by sharing memory; instead, share memory by communicating.
+- Goroutines: are a lightweight thread of execution.
+
+.play code/concurrent.go /START OMIT/,/END OMIT/
+
+* Concurrent programming (2), lock.
+.play code/concurrent_lock.go /START OMIT/,/END OMIT/
+
+* Concurrent programming (3), channels.
+Channels are the pipes that connect concurrent goroutines. You can send values into channels from one goroutine and receive those values into another goroutine
+.play code/channel_ping.go /^func main/,/^}/
+
+* Concurrent programming (4), channels range/close.
+A sender can close a channel to indicate that no more values will be sent.
+.play code/channel_range.go /START OMIT/,/END OMIT/
+The loop for i := range ch receives values from the channel repeatedly until it is closed.
+
+* Concurrent programming (5), channels range/close.
+- Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+- Receivers can test whether a channel has been closed by assigning a second parameter to the receive.
+  v, ok := <-ch
+  if ok != nil {
+     fmt.Println("Channel open")
+  }
+- Channels aren’t like files; you don’t usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop.
+
 
 * Q & A
 .image images/gopher.png
