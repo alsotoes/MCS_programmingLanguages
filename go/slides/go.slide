@@ -85,3 +85,14 @@ It pushes a function call onto a list. The list of saved calls is executed after
 Usefull for clean-up actions.
 
 * Exception Handling, defer (2):
+- A deferred function's arguments are evaluated when the defer statement is evaluated.
+.play code/defer_a.go /^func a/,/^}/
+- Deferred function calls are executed in Last In First Out order after the surrounding function returns.
+.play code/defer_b.go /^func b/,/^}/
+
+* Exception Handling, defer (2):
+- Deferred functions may read and assign to the returning function's named return values.
+.play code/defer_c.go /^func c/,/^}/
+
+* Q & A
+.image images/gopher.png 
