@@ -19,7 +19,7 @@ See golang.org about everything else.
 https://en.wikipedia.org/wiki/Gopher_(animal)
 Search about gopher, the golang mascot.
 
-* 
+*
 .image images/gorocks.jpg
 
 * Go
@@ -71,16 +71,16 @@ Highly pragmatic maybe for some developers, Go refuses to compile programs with 
 
 - For number representation Go has integer, floats and complex data types.
 - Number representations can have sign or not.
-- Integer can be 8, 16, 32 or 64 bits long, Floats are 32 or 64 bits long, complex are 64 bit or 128 bits long.
-- Default size of numbers are: 16 bits for ints, 32 bits for floats and 64 bits for complex
+- Integer can be 8, 16, 32 or 64 bits long, Floats are 32 or 64 bits long, complex are 64 bits or 128 bits long.
+- Default size for numbers are: 16 bits for ints, 32 bits for floats and 64 bits for complex
 
 .play code/numbers.go /^func main/,/^}/
 
 * Booleans and pointers
 
-- Booleans are represented just by one bit that either represents true or false.
+- Booleans are represented just by one bit that either represents true or false value.
 - Pointers are data types too, they are valid memory addresses.
-- Pointer have two operands: * that denotes a variable pointer and & that gives the pointer of a variable.
+- Pointers have two operands: * that denotes a variable pointer and & that gives the address value of a variable.
 - Not every value has a pointer but every variable has a pointer.
 
 .play code/pointers_booleans.go /^func main/,/^}/
@@ -89,13 +89,13 @@ Highly pragmatic maybe for some developers, Go refuses to compile programs with 
 - In Go, Arrays are fixed size.
 - Size needs to be expressed in declaration.
 - Arrays can only have one kind of type in it.
-- 0 based index
+- 0-based index.
 
 .play code/arrays.go /^func main/,/^}/
 
 * Slices
 - Slices are like references or views of arrays.
-- It's length is dynamic, it can change.
+- Length is dynamic, it can change.
 - Slices does not store data, they just reference them.
 - With brackets we can create slices from arrays.
   a[1:3]
@@ -110,22 +110,31 @@ Highly pragmatic maybe for some developers, Go refuses to compile programs with 
 
 * Slices
 
-- We can create directly slices, Go will first create an array and then reference it.
+- We can directly create slices without an array, Go will first create an array and then reference it.
   []bool{true, true, false}
 - Length: Number of elements in the slice.
-- Capacity: number of elements in the underlying array, counting from the first element in the slice.
+- Capacity: number of elements in the underlying array, counting from the first element of the slice.
 
 .play code/slices3.go /^func main/,/^}/
 
 * Maps
-- Association of two values, a key and an element.
+- Formally defined as associations of two values, a key and an element.
 - Not bounded to a specific size, if we give it, we'll help performance of the program.
 - Built-in delete method
 
 .play code/maps.go /^func main/,/^}/
 
 * Structs
--
+- Structs can be defined as an association of other data types. They can have basic data types such as integers or floats and more complex data types such as functions or even other strucs.
+- We can access the values of a struct with the operand .
+  struct {
+       x, y int
+       u float32
+       A *[]int
+       F func()
+  }
+
+.play code/struct.go /^func main/,/^}/
 
 * Variable names
 - Variable names needs to have at least one letter at the beginning following by any number of alphanumeric characters.
@@ -139,21 +148,95 @@ Highly pragmatic maybe for some developers, Go refuses to compile programs with 
 - Other special keywords used by the language like int or float can be used as variable names at coder discretion.
 
 * Declarations and assignments
-- blah
+- There are two ways to declare variables in Go:
+- Explicit form: We tell the compiler the data type of the variable. We declare with =
+- Implicit form: We don't tell the compiler the data type of the variable, the compiler will try to infer the data type. We declare with :=
 
-* Control structure
-- For loops
-- Switch / Case
-- Break / Continue
+.play code/declarations.go /^func main/,/^}/
+
+* For Loops
+- In Go, the only way to create loops is with for. Go doesn't have While :(
+- For loops can be written in three forms:
+- The basic and most common for has three components: init statement, condition expression, post statement
+
+.play code/loops.go /^func main/,/^}/
+
+* For Loops
+- Init and post statements are optional (While... is that you?)
+
+.play -edit code/loops2.go /^func main/,/^}/
+
+* For (forever) loops
+- Yeah... the condition expression can be optional too, and we'll have a forever loop.
+
+.play code/loops3.go /^func main/,/^}/
+
+* If / else
+- If doesn't need to have parentheses between the expression, but braces after the expression is required.
+- we can have the following construction:
+  if declaration; expression {}
+- the scope of the variable  declared on the if: it will be accessible on all the if branches.
+
+* If / else
+
+.play code/ifelse.go
+
+* Switch / Case
+
+- Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+- Switch without a condition is the same as switch true. (It's the same as a if-then-else chain).
+- Switch (like ifs) can have a declaration followed by a semicolon and an expression.
+
+.play code/switch.go /^func main/,/^}/
+
+* Breaks / Continues
+- Unlike C, break and continue can reference a label code, so the break or the continue will be done at that label.
+
+.play code/breaks.go /^func main/,/^}/
 
 * Functions
-- blah
+- Functions in go are data types (whaaaaat)
+- A function can take zero or more arguments.
+- Notice that the type comes after the variable name.
+  func add(x int, y int) int {
+    return x + y
+  }
+
+- A function can return any number of results.
+- Go's return values may be named. If so, they are treated as variables defined at the top of the function.
+  func split(sum int) (x, y int) {
+    x = sum * 4 / 9
+    y = sum - x
+    return // x and y will be returned
+  }
 
 * Methods
-- blah
+- A method is a function with a special receiver argument.
+- The receiver appears in its own argument list between the func keyword and the method name.
+  func Abs(v Vertex) float64 {
+  	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+  }
+  v.Abs()
+
+* Methods vs functions
+.play code/method.go
+
+* Methods vs functions
+.play code/functions.go
+
 
 * Interfaces
-- blah
+- An interface type is defined as a set of method signatures.
+- A value of interface type can hold any value that implements those methods.
+- Interfaces are implemented implicitly. (advantage?)
+- A type implements an interface by implementing its methods.
+  type I interface {
+  	M() // M is a functions
+  }
+
+* Interfaces
+
+.play code/interfaces.go
 
 * Memory Management
 What Goes Where? The Go Programming Language Specification does not define where items will be allocated.
