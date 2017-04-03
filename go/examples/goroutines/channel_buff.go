@@ -8,7 +8,7 @@ func main() {
 	c <- 2
 	c3 := func() { c <- 3 }
 	go c3()
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
+	fmt.Print(<-c)
+	fmt.Print(<-c)
+	fmt.Print(<-c)
 }
