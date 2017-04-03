@@ -2,8 +2,8 @@ Programming Languages
 Go Programming Language
 3 Apr 2017
 
-TIMOTHEE RENE GIVOIS MENDEZ 
-LUIS DANIEL HERNANDEZ SANDOVAL 
+TIMOTHEE RENE GIVOIS MENDEZ
+LUIS DANIEL HERNANDEZ SANDOVAL
 ALVARO ANTONIO SOTO ESCOBAR
 
 
@@ -19,7 +19,7 @@ See golang.org about everything else.
 https://en.wikipedia.org/wiki/Gopher_(animal)
 Search about gopher, the golang mascot.
 
-* 
+*
 .image images/gorocks.jpg
 
 * Go
@@ -28,17 +28,18 @@ Search about gopher, the golang mascot.
 - Paradigm: compiled, concurrent, imperative, structured
 - Designed by: Robert Griesemer, Rob Pike, Ken Thompson
 - Developer: Google Inc.
-- First appeare: November 10, 2009
+- First appearance: November 10, 2009
 - Typing discipline: strong, static, inferred, structural
 - Implementation language: Go, assembly language, previously C (gc); C++ (gccgo)
 - OS: Linux, macOS, FreeBSD, NetBSD, OpenBSD,Windows, Plan 9, DragonFly BSD, Solaris
 - License: BSD
 - Filename extensions: .go
-- Website: https://golang.org		
+- Website: https://golang.org
+
 
 * Some more cool features
 
-Go is a new programming language (2009) that didn’t evolve or borrow from existing programming languages such as C# and Java. 
+Go is a new programming language (2009) that didn’t evolve or borrow from existing programming languages such as C# and Java.
 
 Go focuses on real-world practices for building next-generation applications on the cloud as well as distributed and concurrent computing environments, and for system programming.
 
@@ -48,8 +49,114 @@ Highly pragmatic maybe for some developers, Go refuses to compile programs with 
 
 .play code/refuse.go /^func main/,/^}/
 
+* Syntax
+
+- For one line comments, we may use //. For multi line comment we can use /* to start a comment and */ to finish it.
+- Unlike C, go doesn't need to have semicolons at the end of a statement.
+- Compiler detects automatically where to insert semicolons.
+
+.play code/hello_world.go /^func main/,/^}/
+
+* Types
+
+- In Go, everything is treated as a data type, from basic types like ints or strings or more complex structures such as structs, arrays or even functions and interfaces.
+- Strings can be created either by double quotes or single ticks.
+- Double quotes doesn't accept newlines, while singe tick does.
+- Strings are 0 based index arrays of arbitrary bytes and they have a variable len associated with them.
+- Runes are uint32 which represent a valid unicode code point.
+
+.play -edit code/strings.go /^func main/,/^}/
+
+* Number Representation
+
+- For number representation Go has integer, floats and complex data types.
+- Number representations can have sign or not.
+- Integer can be 8, 16, 32 or 64 bits long, Floats are 32 or 64 bits long, complex are 64 bit or 128 bits long.
+- Default size of numbers are: 16 bits for ints, 32 bits for floats and 64 bits for complex
+
+.play code/numbers.go /^func main/,/^}/
+
+* Booleans and pointers
+
+- Booleans are represented just by one bit that either represents true or false.
+- Pointers are data types too, they are valid memory addresses.
+- Pointer have two operands: * that denotes a variable pointer and & that gives the pointer of a variable.
+- Not every value has a pointer but every variable has a pointer.
+
+.play code/pointers_booleans.go /^func main/,/^}/
+
+* Arrays
+- In Go, Arrays are fixed size.
+- Size needs to be expressed in declaration.
+- Arrays can only have one kind of type in it.
+- 0 based index
+
+.play code/arrays.go /^func main/,/^}/
+
+* Slices
+- Slices are like references or views of arrays.
+- It's length is dynamic, it can change.
+- Slices does not store data, they just reference them.
+- With brackets we can create slices from arrays.
+  a[1:3]
+
+.play code/slices.go /^func main/,/^}/
+
+* Slices
+- They have an underlying array
+- So, if we modify an element of a slice, we are modifying the array. Other references will see this modification later.
+
+.play code/slices2.go /^func main/,/^}/
+
+* Slices
+
+- We can create directly slices, Go will first create an array and then reference it.
+  []bool{true, true, false}
+- Length: Number of elements in the slice.
+- Capacity: number of elements in the underlying array, counting from the first element in the slice.
+
+.play code/slices3.go /^func main/,/^}/
+
+* Maps
+- Association of two values, a key and an element.
+- Not bounded to a specific size, if we give it, we'll help performance of the program.
+- Built-in delete method
+
+.play code/maps.go /^func main/,/^}/
+
+* Structs
+-
+
+* Variable names
+- Variable names needs to have at least one letter at the beginning following by any number of alphanumeric characters.
+- There are reserved keywords that cannot be used as variable names:
+  select  case      defer   go
+  map     struct    chan    else
+  goto    package   switch  const
+  if      range     type    continue
+  for     import    return  var
+  fallthrough
+- Other special keywords used by the language like int or float can be used as variable names at coder discretion.
+
+* Declarations and assignments
+- blah
+
+* Control structure
+- For loops
+- Switch / Case
+- Break / Continue
+
+* Functions
+- blah
+
+* Methods
+- blah
+
+* Interfaces
+- blah
+
 * Memory Management
-What Goes Where? The Go Programming Language Specification does not define where items will be allocated. 
+What Goes Where? The Go Programming Language Specification does not define where items will be allocated.
 
 However, certain requirements will exclude some choices of memory in certain conditions. For instance:
 
@@ -58,14 +165,14 @@ However, certain requirements will exclude some choices of memory in certain con
 - Variables allocated in the stack unlike heap allocated, are destroyed when the rest of the stack is destroyed (when the function returns).
 
 * Garbage collection (background)
-John McCarthy invented something called “garbage collection” all the way back in 1958. 
+John McCarthy invented something called “garbage collection” all the way back in 1958.
 
 .image images/john_mccarthy.png
 
 * Garbage collection (GOgc)
 
 - Bjarne Stroustrup
-  "C programmers think memory management is too important to be left to the computer. 
+  "C programmers think memory management is too important to be left to the computer.
   Lisp programmers think memory management is too important to be left to the user."
 
 
@@ -107,4 +214,4 @@ Usefull for clean-up actions.
 * Concurrency programming
 
 * Q & A
-.image images/gopher.png 
+.image images/gopher.png
