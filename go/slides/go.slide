@@ -239,6 +239,50 @@ Highly pragmatic maybe for some developers, Go refuses to compile programs with 
 
 .play code/interfaces.go
 
+* Semantics
+
+*Type Checking
+
+- Go is statically typed
+
+.play code/type.go /^func main/,/^}/
+
+* Type Conversion
+
+- Similar to a cast in C
+
+.play code/conversion.go
+
+* Type Assertion
+
+- State to the compiler that a value has the specified type
+
+.play code/assertion.go
+
+* Parameter Passing
+
+- Everything in Go is passed by value
+
+.play code/parameter1.go
+
+* Pass by Reference (with pointers)
+
+.play code/parameter2.go
+
+* Subprograms
+
+.play code/imports.go
+
+* Unsued imports
+
+.play code/uimports.go
+
+* Overloading
+
+- It is not allowed, instead variadic functions are available
+
+.play code/overload.go
+
 * Memory Management
 What Goes Where? The Go Programming Language Specification does not define where items will be allocated.
 
