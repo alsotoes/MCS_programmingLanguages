@@ -1,4 +1,4 @@
-# MCS_programmingLenguages
+# MCS_programmingLanguages
 Programming languages code, course 2016
 
 == GO code and documentation authors ==
